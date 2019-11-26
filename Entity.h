@@ -16,15 +16,20 @@
 class Entity
 {
 private:
+	void initVariables();
 
 protected:
-	//probably replace this with private data and use setters/getters
-	sf::RectangleShape shape;
+	sf::Texture* texture;
+	sf::Sprite* sprite;
+
 	float movementSpeed;
 
 public:
 	Entity();
 	virtual ~Entity();
+
+	//Compoenet functions
+	void createSprite(sf::Texture* texture);
 
 	//Functions
 	virtual void move(const float& dt, const float dir_x, const float dir_y);

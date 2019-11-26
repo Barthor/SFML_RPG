@@ -26,12 +26,9 @@ public:
 	virtual ~State();
 
 	const bool& getQuit() const;
-
-	virtual void checkForQuit();
-
+	void endState();
 
 	//pure virtual functions, makes sure that if you inherit from this class, then it must define these
-	virtual void endState() = 0;
 	virtual void updateMousePositions();
 	virtual void updateInput(const float& dt) = 0;
 	virtual void update(const float& dt) = 0;

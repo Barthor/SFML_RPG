@@ -26,20 +26,8 @@ GameState::~GameState()
 {
 
 }
-void GameState::endState()
-{
-	std::cout << "Ending GameState!" << "\n";
-}
 void GameState::updateInput(const float& dt)
 {
-	this->checkForQuit();
-}
-
-void GameState::update(const float& dt)
-{
-	this->updateMousePositions();
-	this->updateInput(dt);
-
 	//Update player input
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_LEFT"))))
 		this->player.move(dt, -1.f, 0.f);
@@ -49,6 +37,15 @@ void GameState::update(const float& dt)
 		this->player.move(dt, 0.f, -1.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_DOWN"))))
 		this->player.move(dt, 0.f, 1.f);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
+		this->endState();
+}
+
+void GameState::update(const float& dt)
+{
+	this->updateMousePositions();
+	this->updateInput(dt);
 
 	this->player.update(dt);
 }
